@@ -8,7 +8,7 @@ __Author: Bo Wu & Xiaofei Chen__
 
 __Description:__
 
-The code package, called SurfaceModes, aims to compute the normal modes (i.e. the phase velocities and the corresponding displacement-traction vectors at frequencies of interest) for diverse horizontal layered models.
+The code package, called **SurfaceModes**, aims to compute the normal modes (i.e. the phase velocities and the corresponding displacement-traction vectors at frequencies of interest) for diverse horizontal layered models.
 
 The codes are written in Fortran 90 language and compiled on Windows platform using Intel Fortran compiler. Users are suggested to install an Intel Fortran compiled before running the code. 
 
