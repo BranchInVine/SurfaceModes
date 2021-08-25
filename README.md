@@ -2,7 +2,7 @@
 
 __Created time: 20210825_3_114847__
 
-__Author: Bo Wu & Xiaofei Chen__
+__Author: Bo Wu and Xiaofei Chen__
 
 **Title of our paper:** _A versatile solver of the normal modes for horizontal stratified complicated models_
 
