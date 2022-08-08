@@ -1,0 +1,61 @@
+** Description **
+==================================================================
+
+The code package, called SurfaceModes, aims to compute the normal modes (i.e. the phase velocities and the corresponding displacement-traction vectors at frequencies of interest) for diverse horizontal layered models.
+
+The codes are written in Fortran 90 language and compiled on Windows platform using Intel Fortran compiler. Users are suggested to install an Intel Fortran compiled before running the code. 
+
+The copyright are due to Bo Wu and Xiaofei Chen, from Department of Earth and Space Sciences, Southern University of Science and Technology (SUSTech), Shenzhen 518055, China.
+
+For any problems regarding the software, please contact Bo Wu via VigorWU@QQ.COM.
+
+This user guide is finished at 2021-8-24 (Tue.) 17:19:46.
+
+** Installation & Usage **
+==================================================================
+
+1. Open the Developer Command Prompt provided by Microsoft Visual Studio (or open the terminal on other operating systems), and go to the directory src
+
+2. On Windows platform compile the source codes and generate the executable by typing the following:
+    
+    nmake /nologo /f makefile.vs all
+
+   On other operating systems, the user may need to build a makefile like the file makefile.vs used on Windows platform.
+   We have provided two example makefiles with their file names ending with the corresponding Fortran compiler which have been tested successfully using gfortran or ifort on Linux platforms.
+   (NB. The makefiles suitable for Linux platforms are written briefly, only to make the codes compilation pass but leave the intermediate objects, e.g, *.o and *.mod, in the src directory.
+   According to the fortran compiler you use, try the following commands:
+   make -f Makefile_gfortran, or
+   make -f Makefile_ifort,
+   which would invoke gfortran or Intel Fortran to compile the source codes)
+
+3. Change to the directory res, and run the code using the example input files and models, e.g.,
+
+    SurfaceModes.exe input_m3
+
+** INPUT **
+==================================================================
+
+a. If the dispersion curves are computed only, the input files are:
+    1) an input file (e.g., input_m3),
+    2) a model file (e.g., m3.dat).
+
+b. If the eigenfunctions are needed, the user should be aware that the computation of the dispersion curves must be performed first, whose output files are used in this case. The input files are:
+    1) an input file (e.g., input_m3),
+    2) a model file (e.g., m3.dat),
+    3) an ASCII file recording the information of the roots found at all the frequencies required (e.g., all_R_m3.txt),
+    4) a binary file containing the angular frequency w, the phase velocity c, the layer No. ilay of the secular function by which to find this mode and the starting layer ll for each mode (e.g., eigf_R_m3).
+
+** OUTPUT **
+==================================================================
+
+a. If the dispersion curves are computed only, the example output files are:
+    1) all_R_7layers.txt (recording the information of the roots found at all the frequencies required),
+    2) allroots_R_7layers.txt (storing the phase velocities computed at each frequency),
+    3) cr0_R_7layers.txt (containing the execution time, some normalization quantities, estimated values of the phase velocities of Rayleigh modes and Stoneley modes, and the time cost),
+    4) eigf_R_7layers (containing the angular frequency w, the phase velocity c, the layer No. ilay of the secular function by which to find this mode and the starting layer ll for each mode).
+
+b. For the computation of the eigenfunctions, the example output files are:
+    1) info4eigfun_R_7layers_n0 (containing the depth interval dz, the number of nodes, the number of frequencies to be computed, and for each frequency the No. of the frequency point, the value of the frequency, the number of the roots at the frequency, the starting and ending overtone numbers, the phase velocity, the layer No. ilay of the secular function by which to find this mode and the starting layer ll for each mode),
+    2) ForPlot_R_7layers_n0 (Containing some useful information for drawing by me ^_^)
+    3) eigfun_R_7layers_n0 (a binary file created by ifort with form='binary' in the source code; containing the depths of all the nodes and the values of the displacement-traction vectors)
+
